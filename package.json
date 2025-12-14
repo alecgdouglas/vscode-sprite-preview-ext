@@ -1,0 +1,51 @@
+{
+  "name": "sprite-preview",
+  "displayName": "Sprite Sheet Preview",
+  "description": "Shows previews of sprite frames within the JSON definition.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Sprite Preview",
+      "properties": {
+        "spritePreview.thumbnailSize": {
+          "type": "number",
+          "description": "The height of the sprite preview image shown in the hover tooltip in pixels. If not set, the image is shown at full size."
+        },
+        "spritePreview.backgroundColor": {
+          "type": "string",
+          "default": "transparent",
+          "description": "Background color for the sprite previews. Supports Hex (#RRGGBB, #RGB) and standard CSS color names or functions."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/pngjs": "^6.0.5",
+    "@types/tinycolor2": "^1.4.6",
+    "@types/vscode": "^1.70.0",
+    "typescript": "^4.9.4"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "jsonc-parser": "^3.3.1",
+    "pngjs": "^7.0.0",
+    "tinycolor2": "^1.6.0"
+  }
+}
