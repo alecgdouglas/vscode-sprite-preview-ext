@@ -1,51 +1,63 @@
 {
-  "name": "sprite-preview",
-  "displayName": "Sprite Sheet Preview",
-  "description": "Shows previews of sprite frames within the JSON definition.",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.70.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onLanguage:json"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "configuration": {
-      "title": "Sprite Preview",
-      "properties": {
-        "spritePreview.thumbnailSize": {
-          "type": "number",
-          "description": "The height of the sprite preview image shown in the hover tooltip in pixels. If not set, the image is shown at full size."
-        },
-        "spritePreview.backgroundColor": {
-          "type": "string",
-          "default": "transparent",
-          "description": "Background color for the sprite previews. Supports Hex (#RRGGBB, #RGB) and standard CSS color names or functions."
+    "name": "spritesheet-json-preview",
+    "displayName": "Spritesheet JSON Preview",
+    "description": "Shows previews of sprite frames within the JSON definition.",
+    "version": "0.0.1",
+    "publisher": "alec-douglas",
+    "icon": "docs/icon.png",
+    "engines": {
+        "vscode": "^1.70.0"
+    },
+    "categories": [
+        "Other",
+        "Visualization"
+    ],
+    "keywords": [
+        "sprite",
+        "spritesheet",
+        "aseprite"
+    ],
+    "activationEvents": [
+        "onLanguage:json"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "Spritesheet JSON Preview",
+            "properties": {
+                "spritePreview.thumbnailSize": {
+                    "type": "number",
+                    "description": "The height of the sprite preview image shown in the hover tooltip in pixels. If not set, the image is shown at full size."
+                },
+                "spritePreview.backgroundColor": {
+                    "type": "string",
+                    "default": "transparent",
+                    "description": "Background color for the sprite previews. Supports Hex (#RRGGBB, #RGB) and standard CSS color names or functions."
+                }
+            }
         }
-      }
-    }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
-  },
-  "devDependencies": {
-    "@types/node": "^16.11.7",
-    "@types/pngjs": "^6.0.5",
-    "@types/tinycolor2": "^1.4.6",
-    "@types/vscode": "^1.70.0",
-    "typescript": "^4.9.4"
-  },
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "jsonc-parser": "^3.3.1",
-    "pngjs": "^7.0.0",
-    "tinycolor2": "^1.6.0"
-  }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/node": "^16.11.7",
+        "@types/pngjs": "^6.0.5",
+        "@types/tinycolor2": "^1.4.6",
+        "@types/vscode": "^1.70.0",
+        "typescript": "^4.9.4"
+    },
+    "license": "SEE LICENSE IN LICENSE.txt",
+    "dependencies": {
+        "jsonc-parser": "^3.3.1",
+        "pngjs": "^7.0.0",
+        "tinycolor2": "^1.6.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alecgdouglas/vscode-sprite-preview-ext.git"
+    },
+    "homepage": "https://github.com/alecgdouglas/vscode-sprite-preview-ext"
 }
