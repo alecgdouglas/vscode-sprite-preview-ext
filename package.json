@@ -2,7 +2,7 @@
     "name": "spritesheet-json-preview",
     "displayName": "Spritesheet JSON Preview",
     "description": "Shows previews of sprite frames within the JSON definition.",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "alec-douglas",
     "icon": "docs/icon.png",
     "engines": {
