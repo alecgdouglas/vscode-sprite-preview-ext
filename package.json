@@ -27,7 +27,7 @@
             "properties": {
                 "spritePreview.thumbnailSize": {
                     "type": "number",
-                    "description": "The height of the sprite preview image shown in the hover tooltip in pixels. If not set, the image is shown at full size."
+                    "description": "The height of the sprite preview image shown in the hover tooltip in pixels. If not set (0), the image is shown at full size."
                 },
                 "spritePreview.backgroundColor": {
                     "type": "string",
