@@ -1,6 +1,6 @@
 # Sprite Sheet Preview for VS Code
 
-This extension adds gutter icon sprite previews to your JSON sprite sheet definitions (Aseprite / TexturePacker Hash or Array format).
+This extension adds icon sprite previews to your JSON sprite sheet definitions (Aseprite / TexturePacker Hash or Array format).
 
 ## Features
 
@@ -22,6 +22,7 @@ This extension adds gutter icon sprite previews to your JSON sprite sheet defini
 
 -   `spritePreview.thumbnailSize`: Set the size (height) of the preview image shown in the hover tooltip (default: full size).
 -   `spritePreview.backgroundColor`: Set the background color of the preview image (default: transparent).
+    -   Useful if there is insufficient contrast between your VS Code theme and your sprite.
 
 ## Requirements
 
