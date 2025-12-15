@@ -157,8 +157,12 @@ export function activate(context: vscode.ExtensionContext) {
 
                 if (dataUri) {
                     const imgTag = size
-                        ? `<img src="${dataUri.toString(true)}" height="${size}" style="image-rendering: pixelated;" />`
-                        : `<img src="${dataUri.toString(true)}" style="image-rendering: pixelated;" />`;
+                        ? `<img src="${dataUri.toString(
+                              true
+                          )}" height="${size}" style="image-rendering: pixelated;" />`
+                        : `<img src="${dataUri.toString(
+                              true
+                          )}" style="image-rendering: pixelated;" />`;
 
                     const markdown = new vscode.MarkdownString(
                         `**${frame.key}** (${frame.rect.w}x${frame.rect.h})  \n${imgTag}`

@@ -71,7 +71,51 @@ export class ImageProcessor {
             }
         }
 
-        PNG.bitblt(sourcePng, dst, x, y, w, h, 0, 0);
+        for (let dy = 0; dy < h; dy++) {
+            for (let dx = 0; dx < w; dx++) {
+                const srcIdx = ((y + dy) * sourcePng.width + (x + dx)) << 2;
+                const dstIdx = (dy * w + dx) << 2;
+
+                const srcR = sourcePng.data[srcIdx];
+                const srcG = sourcePng.data[srcIdx + 1];
+                const srcB = sourcePng.data[srcIdx + 2];
+                const srcA = sourcePng.data[srcIdx + 3];
+
+                if (srcA === 255) {
+                    dst.data[dstIdx] = srcR;
+                    dst.data[dstIdx + 1] = srcG;
+                    dst.data[dstIdx + 2] = srcB;
+                    dst.data[dstIdx + 3] = srcA;
+                } else if (srcA === 0) {
+                    // Do nothing, keep background
+                } else {
+                    const srcAlpha = srcA / 255;
+                    const dstA = dst.data[dstIdx + 3];
+                    const dstAlpha = dstA / 255;
+                    const outAlpha = srcAlpha + dstAlpha * (1 - srcAlpha);
+
+                    if (outAlpha === 0) {
+                        dst.data[dstIdx] = 0;
+                        dst.data[dstIdx + 1] = 0;
+                        dst.data[dstIdx + 2] = 0;
+                        dst.data[dstIdx + 3] = 0;
+                    } else {
+                        const dstR = dst.data[dstIdx];
+                        const dstG = dst.data[dstIdx + 1];
+                        const dstB = dst.data[dstIdx + 2];
+
+                        const r = (srcR * srcAlpha + dstR * dstAlpha * (1 - srcAlpha)) / outAlpha;
+                        const g = (srcG * srcAlpha + dstG * dstAlpha * (1 - srcAlpha)) / outAlpha;
+                        const b = (srcB * srcAlpha + dstB * dstAlpha * (1 - srcAlpha)) / outAlpha;
+
+                        dst.data[dstIdx] = Math.round(r);
+                        dst.data[dstIdx + 1] = Math.round(g);
+                        dst.data[dstIdx + 2] = Math.round(b);
+                        dst.data[dstIdx + 3] = Math.round(outAlpha * 255);
+                    }
+                }
+            }
+        }
         const dstBuffer = PNG.sync.write(dst);
         const base64 = dstBuffer.toString("base64");
         return vscode.Uri.parse(`data:image/png;base64,${base64}`);
